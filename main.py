@@ -124,11 +124,9 @@ class NewsMonitor:
             logging.error(f"❌ '{keyword}' 크롤링 중 에러: {e}")
 
     def run(self):
-        logging.info("🔄 뉴스 모니터링 루프 시작 (10분 간격)")
-        while True:
-            self.fetch_news()
-            logging.info("💤 10분 대기 중... (Ctrl+C로 종료)")
-            time.sleep(600)
+        logging.info("🚀 GitHub Actions에 의해 실행됨")
+        self.fetch_news()
+        logging.info("👋 작업 완료. 종료합니다.")
 
 if __name__ == "__main__":
     bot = NewsMonitor()
