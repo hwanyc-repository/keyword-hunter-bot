@@ -22,14 +22,15 @@ class NewsMonitor:
         self.tg_token = os.getenv("TELEGRAM_BOT_TOKEN")
         self.tg_chat_id = os.getenv("TELEGRAM_CHAT_ID")
 
-        # [업그레이드 포인트 1] 콤마로 구분된 키워드를 리스트로 변환
         raw_keywords = os.getenv("SEARCH_KEYWORD", "속보")
-        # 콤마로 자르고, 앞뒤 공백 제거 (예: " 속보 , 비트코인 " -> ["속보", "비트코인"])
         self.keywords = [k.strip() for k in raw_keywords.split(',')]
 
-        if not self.sb_url or not self.tg_token:
-            logging.error("환경변수(.env)가 제대로 설정되지 않았습니다!")
-            return
+        if not self.sb_url:
+            logging.error("❌ 치명적 오류: SUPABASE_URL 환경변수가 없습니다.")
+        if not self.sb_key:
+            logging.error("❌ 치명적 오류: SUPABASE_KEY 환경변수가 없습니다.")
+        if not self.tg_token:
+            logging.error("❌ 치명적 오류: TELEGRAM_BOT_TOKEN 환경변수가 없습니다.")
 
         try:
             self.supabase: Client = create_client(self.sb_url, self.sb_key)
