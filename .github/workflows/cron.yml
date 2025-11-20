@@ -1,4 +1,4 @@
-name: Keyword Hunter Bot Cron
+name: Python Serverless News Bot (Keyword Hunter)
 
 on:
   schedule:
