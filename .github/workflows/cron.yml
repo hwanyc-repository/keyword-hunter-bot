@@ -1,8 +1,11 @@
 name: Python Serverless News Bot (Keyword Hunter)
 
+# on:
+#   schedule:
+#     - cron: '*/15 * * * *'
+#   workflow_dispatch:
+
 on:
-  schedule:
-    - cron: '*/15 * * * *'
   workflow_dispatch:
 
 jobs:
